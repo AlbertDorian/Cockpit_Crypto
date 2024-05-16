@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb_container_crypto
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: 3a8dec982ed29bfc33ded35aaeec0728b50f6f906fd9a7d02b26df45f32e0e81
+      MARIADB_DATABASE: cockpitCrypto
+      MARIADB_USER: dev
+      MARIADB_PASSWORD: dev
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - ./docker/maria-db-init:/docker-entrypoint-initdb.d
+volumes:
+  mariadb-data:
+

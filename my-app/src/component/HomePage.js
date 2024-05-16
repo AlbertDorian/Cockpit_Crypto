@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import LoginPage from "./LoginPage";
 
 const HomePage: React.FC = () => {
     return (
-        <h2>Cockpit Crypto</h2>
+        <LoginPage>
+        </LoginPage>
+
     );
 };
 
