@@ -1,0 +1,40 @@
+.search-bar {
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+    position: relative; /* Permet de positionner les résultats par rapport à la barre de recherche */
+}
+
+.InputS {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-results {
+    margin-top: 10px; /* Petite marge pour séparer légèrement les résultats de la barre de recherche */
+    background-color: white; /* Fond blanc */
+    border: 1px solid #ddd; /* Bordure autour de la liste des résultats */
+    border-radius: 4px; /* Coins arrondis */
+    max-height: 300px; /* Hauteur maximale pour la liste des résultats */
+    overflow-y: auto; /* Ajoute une barre de défilement si la liste dépasse la hauteur maximale */
+    position: absolute; /* Positionne les résultats juste sous la barre de recherche */
+    width: 100%; /* Assure que les résultats prennent toute la largeur de la barre de recherche */
+    z-index: 1; /* Place les résultats au-dessus des autres éléments */
+}
+
+.search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-results li:last-child {
+    border-bottom: none; /* Supprime la bordure inférieure du dernier élément */
+}

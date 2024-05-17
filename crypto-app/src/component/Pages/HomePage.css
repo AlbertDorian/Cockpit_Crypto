@@ -1,0 +1,23 @@
+.indicator-list{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.main{
+    width: 100vw;
+    height: 100vh;
+    background: #121212 ;
+    color : #DADADA;
+}
+
+
+.information-crytpo{
+    padding-left: 30px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: #a688fa
+
+}
