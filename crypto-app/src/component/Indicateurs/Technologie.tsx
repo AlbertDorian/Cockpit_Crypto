@@ -1,11 +1,13 @@
 import React from 'react';
-import "./indicator.css"
+import "./indicator.css";
 
+const Technologie: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
+    if (!cryptoData) {
+        return <div>Aucune donnée disponible</div>;
+    }
 
-const Technologie: React.FC = () => {
     return (
         <div className="indicator-card">
-
             <div className="title-indicator">
                 <h2>Technologie</h2>
             </div>
@@ -40,11 +42,11 @@ const Technologie: React.FC = () => {
                 </tr>
                 <tr>
                     <td>Github étoiles</td>
-                    <td>150</td>
+                    <td className="valid">{cryptoData.developer_data.stars}</td>
                 </tr>
                 <tr>
                     <td>Github abonnés</td>
-                    <td>200</td>
+                    <td className="valid">{cryptoData.developer_data.subscribers}</td>
                 </tr>
                 </tbody>
             </table>

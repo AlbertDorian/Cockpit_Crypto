@@ -14,7 +14,7 @@ import useCryptoData from "../Hooks/GetDataCryptoById";
 const HomePageContent: React.FC = () => {
     const { selectedCrypto } = useCrypto();
     const [cryptoPicture, setCryptoPicture] = useState<string | null>(null);
-    const { cryptoData} = useCryptoData(selectedCrypto?.id || '');
+    const { cryptoData } = useCryptoData(selectedCrypto?.id || '');
 
     useEffect(() => {
         const fetchCryptoPicture = async () => {
@@ -35,35 +35,30 @@ const HomePageContent: React.FC = () => {
     }
 
     return (
+        <Layout>
         <div className="main">
             <div className="information-crytpo">
                 {cryptoPicture && (
-                  <div className="crypto-picture">
+                    <div className="crypto-picture">
                         <img src={cryptoPicture} alt={`${selectedCrypto.name} logo`} />
-                   </div>
+                    </div>
                 )}
                 <h2><strong>{selectedCrypto.name}</strong> ({selectedCrypto.id})</h2>
 
                 <h2>${cryptoData.market_data.current_price.usd} $ </h2>
             </div>
             <div className="indicator-list">
-                <Communauty />
-                <Liquidity />
-                <Momentum />
-                <Technologie />
-                <Security />
-                <Tockenomics />
+                <Communauty cryptoData={cryptoData} />
+                <Liquidity cryptoData={cryptoData} />
+                <Momentum cryptoData={cryptoData} />
+                <Technologie cryptoData={cryptoData} />
+                <Security cryptoData={cryptoData} />
+                <Tockenomics cryptoData={cryptoData} />
             </div>
         </div>
-    );
-};
-
-const HomePage: React.FC = () => {
-    return (
-        <Layout>
-            <HomePageContent />
         </Layout>
     );
 };
 
-export default HomePage;
+
+export default HomePageContent;

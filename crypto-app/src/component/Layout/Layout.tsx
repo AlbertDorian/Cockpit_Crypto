@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Layout.css';
 import { Link, NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { FaBasketShopping } from "react-icons/fa6";
 import Cookies from 'js-cookie';
 import SearchBar from "../SearchBar";
 
@@ -24,18 +23,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div>
             <header>
-                
-                <div className="Nom">
-                    <p className="Nexusnode">COCKPIT CRYPTO</p>
+
+                <div className="title">
+                    <h2>COCKPIT CRYPTO</h2>
                 </div>
-                <div className="Right">
-                    <SearchBar/>
-                    <div className="ProfilN">
+                <div className="menu-search">
+                        <SearchBar/>
+                </div>
+                <div className="menu-profil">
                             <NavLink to="/login">
-                                <CgProfile size={40} className="Icons" />
+                                <CgProfile size={40} className="icons" />
                             </NavLink>
-                    </div>
                 </div>
+
             </header>
             {children}
         </div>

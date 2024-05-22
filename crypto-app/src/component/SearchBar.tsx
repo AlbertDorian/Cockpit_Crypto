@@ -58,7 +58,7 @@ const SearchBar: React.FC = () => {
                         <li>Aucun résultat trouvé</li>
                     ) : (
                         searchResults.map((crypto) => (
-                            <li key={crypto.id} onClick={() => handleSelectCrypto(crypto)}>
+                            <li  key={crypto.id} onClick={() => handleSelectCrypto(crypto)}>
                                 <strong>{crypto.name}</strong> ({crypto.id})
                             </li>
                         ))

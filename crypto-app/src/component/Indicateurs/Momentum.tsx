@@ -2,7 +2,7 @@ import React from 'react';
 import "./indicator.css"
 
 
-const Momentum: React.FC = () => {
+const Momentum: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
     return (
         <div className="indicator-card">
             <div className="title-indicator">

@@ -44,7 +44,7 @@ const useCryptoData = (idCrypto: string) => {
         }
     }, [idCrypto]);
 
-    return { cryptoData};
+    return { cryptoData, loading, error };
 };
 
 export default useCryptoData;

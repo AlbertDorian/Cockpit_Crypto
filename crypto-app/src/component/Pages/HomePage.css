@@ -1,6 +1,8 @@
 .indicator-list{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante */
+    gap: 10px;
     width: 100%;
 }
 .main{

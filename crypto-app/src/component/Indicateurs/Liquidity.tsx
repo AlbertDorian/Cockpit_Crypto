@@ -1,11 +1,30 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import "./indicator.css"
+import {useCrypto} from "../Hooks/CryptoContext";
+import useCryptoData from "../Hooks/GetDataCryptoById";
+import useHistoryData from "../Hooks/UseHistoryData";
 
-const Liquidity: React.FC = () => {
+const Liquidity: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
     const navigate = useNavigate();
+    const { selectedCrypto } = useCrypto();
+    const { cryptoDataHistory: cryptoDataHistory1d } = useHistoryData(selectedCrypto?.id || '', 1);
 
+    console.log(cryptoDataHistory1d)
 
+    if (!cryptoData) {
+        return <div>Aucune donnée disponible</div>;
+    }
+    const calculatePercentageChange = (current: number, previous: number) => {
+        if (previous === 0) return 'N/A';
+        return ((current / previous) * 100).toFixed(2);
+    };
+
+    const calculatePercentageChangeNoFix = (current: number, previous:number) => {
+        if (previous === 0) return 'N/A';
+        const percentage = (current / previous) * 100;
+        return percentage.toExponential(2);
+    };
     return (
         <div className="indicator-card">
             <div className="title-indicator">
@@ -21,11 +40,11 @@ const Liquidity: React.FC = () => {
                 <tbody>
                 <tr>
                     <td>Volume 24h</td>
-                    <td>12456</td>
+                    <td className="valid">{cryptoData.market_data.total_volume.usd}</td>
                 </tr>
                 <tr>
                     <td>Volume/mcap</td>
-                    <td>0.56</td>
+                    <td className="valid">{calculatePercentageChange(cryptoData.market_data.total_volume.usd,cryptoData.market_data.market_cap.usd)}</td>
                 </tr>
                 <tr>
                     <td>Tvl/mcap</td>

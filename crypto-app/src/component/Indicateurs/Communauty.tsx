@@ -2,17 +2,31 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { useCrypto } from "../Hooks/CryptoContext";
 import useCryptoData from "../Hooks/GetDataCryptoById";
-import "./indicator.css"
+import "./indicator.css";
+import useHistoryData from "../Hooks/UseHistoryData";
 
-const Communauty: React.FC = () => {
+const Communauty: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
     const navigate = useNavigate();
     const { selectedCrypto } = useCrypto();
-    const { cryptoData} = useCryptoData(selectedCrypto?.id || '');
+    const { cryptoDataHistory: cryptoDataHistory7d } = useHistoryData(selectedCrypto?.id || '', 7);
+    const { cryptoDataHistory: cryptoDataHistory30d } = useHistoryData(selectedCrypto?.id || '', 30);
+    const { cryptoDataHistory: cryptoDataHistory90d } = useHistoryData(selectedCrypto?.id || '', 90);
 
-
-    if (!cryptoData) {
+    if (!cryptoData || !cryptoDataHistory7d || !cryptoDataHistory30d || !cryptoDataHistory90d) {
         return <div>Aucune donnée disponible</div>;
     }
+
+    console.log("cc",cryptoDataHistory7d)
+    const calculatePercentageChange = (current: number, previous: number) => {
+        if (previous === 0) return 'N/A';
+        return ((current - previous) / previous * 100).toFixed(2);
+    };
+
+    const calculatePercentageChangeNoFix = (current: number, previous:number) => {
+        if (previous === 0) return 'N/A';
+        const percentage = (current / previous) * 100;
+        return percentage.toExponential(2);
+    };
 
     return (
         <div className="indicator-card">
@@ -29,7 +43,7 @@ const Communauty: React.FC = () => {
                 <tbody>
                 <tr>
                     <td>Twitter variation 7j</td>
-                    <td>42</td>
+                    <td className="valid">{calculatePercentageChange(cryptoData.community_data.twitter_followers, cryptoDataHistory7d.community_data.twitter_followers)}%</td>
                 </tr>
                 <tr>
                     <td>Twitter/Di.Mcap</td>
@@ -37,19 +51,19 @@ const Communauty: React.FC = () => {
                 </tr>
                 <tr>
                     <td>Twitter/Mcap</td>
-                    <td>78</td>
+                    <td className="valid" >{calculatePercentageChangeNoFix( cryptoData.market_data.market_cap.usd,cryptoData.community_data.twitter_followers )}</td>
                 </tr>
                 <tr>
                     <td>Abonnés Twitter</td>
-                    <td>{cryptoData.community_data.twitter_followers}</td>
+                    <td className="valid" >{cryptoData.community_data.twitter_followers}</td>
                 </tr>
                 <tr>
                     <td>Twitter variation 30j</td>
-                    <td>64</td>
+                    <td className="valid" >{calculatePercentageChange(cryptoData.community_data.twitter_followers, cryptoDataHistory30d.community_data.twitter_followers)}%</td>
                 </tr>
                 <tr>
                     <td>Twitter variation 90j</td>
-                    <td>92</td>
+                    <td className="valid" >{calculatePercentageChange(cryptoData.community_data.twitter_followers, cryptoDataHistory90d.community_data.twitter_followers)}%</td>
                 </tr>
                 <tr>
                     <td>Dernier tweet sur X</td>
@@ -65,7 +79,7 @@ const Communauty: React.FC = () => {
                 </tr>
                 <tr>
                     <td>Communauté télégram</td>
-                    <td>5432</td>
+                    <td className="valid" >{cryptoData.community_data.telegram_channel_user_count || 'indisponible'}</td>
                 </tr>
                 <tr>
                     <td>Communauté discord</td>

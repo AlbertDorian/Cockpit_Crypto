@@ -1,10 +1,20 @@
 import React from 'react';
 import "./indicator.css"
+import {useCrypto} from "../Hooks/CryptoContext";
 
 
-const Security: React.FC = () => {
+const Security: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
+    const { selectedCrypto } = useCrypto();
+
+    const navigateSkynet=()=>{
+
+        window.open(`https://skynet.certik.com/projects/${selectedCrypto?.id || ''}`)
+
+
+    }
+
     return (
-        <div className="indicator-card">
+        <div className="indicator-card" onClick={navigateSkynet}>
             <div className="title-indicator">
                 <h2>Sécurité</h2>
             </div>
@@ -16,7 +26,7 @@ const Security: React.FC = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr >
                     <td>Skynet global</td>
                     <td>85</td>
                 </tr>
