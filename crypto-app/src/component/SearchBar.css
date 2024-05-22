@@ -1,0 +1,49 @@
+.search-bar {
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+    position: relative; /* Permet de positionner les résultats par rapport à la barre de recherche */
+}
+
+.InputS {
+    width: 100%;
+    padding: 8px;
+    border-radius: 60px;
+    border: 1px solid #282828;
+    color: #DADADA;
+    background-color: #282828;
+    font-size: 20px;
+
+}
+
+.search-results {
+    background-color: #575757; /* Fond blanc */
+    border-radius: 10px; /* Coins arrondis */
+    max-height: 300px; /* Hauteur maximale pour la liste des résultats */
+    overflow-y: auto;
+    position: absolute;
+    width: 100%; /* Assure que les résultats prennent toute la largeur de la barre de recherche */
+    z-index: 1; /* Place les résultats au-dessus des autres éléments */
+    color: #DADADA;
+}
+
+.search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-results li:hover {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    background-color: #ba9ffb;
+    color: black;
+}
+.search-results li:last-child {
+    border-bottom: none; /* Supprime la bordure inférieure du dernier élément */
+}
