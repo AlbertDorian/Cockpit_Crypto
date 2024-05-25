@@ -1,14 +1,17 @@
-import React from 'react';
-import {useCrypto} from "../Hooks/CryptoContext";
-import useCryptoData from "../Hooks/GetDataCryptoById";
-import "./indicator.css"
-
+import React, { useEffect } from 'react';
+import { useIndicators } from '../../contexts/IndicatorsContext';
+import "./indicator.css";
+import ProgressBar from "../ProgressBar";
 
 const Tokenomics: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
+    const { updateIndicatorScore } = useIndicators();
 
-    const { selectedCrypto } = useCrypto();
-
-
+    useEffect(() => {
+        if (cryptoData) {
+            const tokenomicsScore = 93; // Remplacer par le calcul réel si nécessaire
+            updateIndicatorScore('tokenomics', tokenomicsScore);
+        }
+    }, [cryptoData, updateIndicatorScore]);
 
     if (!cryptoData) {
         return <div>Aucune donnée disponible</div>;
@@ -18,6 +21,7 @@ const Tokenomics: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
         <div className="indicator-card">
             <div className="title-indicator">
                 <h2>Tokenomics</h2>
+                <ProgressBar percentage={93} />
             </div>
             <table>
                 <thead>
@@ -32,9 +36,6 @@ const Tokenomics: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
                     <td className="valid">
                         {((cryptoData.market_data.circulating_supply / cryptoData.market_data.total_supply) * 100).toFixed(2)} %
                     </td>
-
-
-
                 </tr>
                 <tr>
                     <td>Niveau record (ATH)</td>
@@ -42,9 +43,7 @@ const Tokenomics: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
                 </tr>
                 <tr>
                     <td>ATH</td>
-                    <td>
-                        {new Date(cryptoData.market_data.ath_date.usd).toISOString().split('T')[0]}
-                    </td>
+                    <td>{new Date(cryptoData.market_data.ath_date.usd).toISOString().split('T')[0]}</td>
                 </tr>
                 <tr>
                     <td>Diff supply ATH</td>
@@ -55,7 +54,7 @@ const Tokenomics: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
                     <td className="valid">{cryptoData.market_data.price_change_percentage_30d.toFixed(2)} %</td>
                 </tr>
                 <tr>
-                    <td>Skynet gouvemance</td>
+                    <td>Skynet gouvernance</td>
                     <td>80</td>
                 </tr>
                 <tr>

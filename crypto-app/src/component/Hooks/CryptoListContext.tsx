@@ -22,10 +22,20 @@ export const CryptoListProvider: React.FC<{ children: ReactNode }> = ({ children
     useEffect(() => {
         const fetchCryptoList = async () => {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/coins/list');
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        accept: 'application/json',
+                        'x-cg-demo-api-key': 'CG-WLB6YqysuiVhreBQWnNtcVT4'
+                    }
+                };
+
+                const response = await fetch('https://api.coingecko.com/api/v3/coins/list?include_platform=true', options);
+
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP: ${response.status}`);
                 }
+
                 const data = await response.json();
                 setCryptoList(data);
             } catch (err) {

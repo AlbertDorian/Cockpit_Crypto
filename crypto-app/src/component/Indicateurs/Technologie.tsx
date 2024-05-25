@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./indicator.css";
+import ProgressBar from "../ProgressBar";
+import { useIndicators } from "../../contexts/IndicatorsContext";
 
 const Technologie: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
+    const { updateIndicatorScore } = useIndicators();
+
+    useEffect(() => {
+        if (cryptoData) {
+            const technologyScore = 20; // Remplacer par le calcul réel si nécessaire
+            updateIndicatorScore('technology', technologyScore);
+        }
+    }, [cryptoData, updateIndicatorScore]);
+
     if (!cryptoData) {
         return <div>Aucune donnée disponible</div>;
     }
@@ -10,8 +21,8 @@ const Technologie: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
         <div className="indicator-card">
             <div className="title-indicator">
                 <h2>Technologie</h2>
+                <ProgressBar percentage={20} />
             </div>
-
             <table>
                 <thead>
                 <tr>

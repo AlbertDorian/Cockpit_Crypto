@@ -1,22 +1,36 @@
-import React from 'react';
-import "./indicator.css"
-import {useCrypto} from "../Hooks/CryptoContext";
-
+// src/Indicateurs/Security.tsx
+import React, { useEffect } from 'react';
+import "./indicator.css";
+import { useCrypto } from "../Hooks/CryptoContext";
+import ProgressBar from "../ProgressBar";
+import { useIndicators } from "../../contexts/IndicatorsContext";
 
 const Security: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
     const { selectedCrypto } = useCrypto();
+    const { updateIndicatorScore } = useIndicators();
 
-    const navigateSkynet=()=>{
 
+
+    useEffect(() => {
+        if (cryptoData) {
+            const securityScore = 100; // Remplacer par le calcul réel si nécessaire
+            updateIndicatorScore('security', securityScore);
+        }
+    }, [cryptoData, updateIndicatorScore]);
+
+    const navigateSkynet = () => {
         window.open(`https://skynet.certik.com/projects/${selectedCrypto?.id || ''}`)
+    }
 
-
+    if (!cryptoData) {
+        return <div>Aucune donnée disponible</div>;
     }
 
     return (
         <div className="indicator-card" onClick={navigateSkynet}>
             <div className="title-indicator">
                 <h2>Sécurité</h2>
+                <ProgressBar percentage={100} /> {/* Mettre à jour le pourcentage */}
             </div>
             <table>
                 <thead>
@@ -26,7 +40,7 @@ const Security: React.FC<{ cryptoData: any }> = ({ cryptoData }) => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
+                <tr>
                     <td>Skynet global</td>
                     <td>85</td>
                 </tr>
