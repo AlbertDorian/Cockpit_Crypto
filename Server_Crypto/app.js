@@ -8,6 +8,9 @@ const swaggerJsdoc = require('swagger-jsdoc');
 
 // Routes
 var usersRouter = require('./routes/users');
+var googleRouter = require('./routes/google')
+var twitterRouter = require('./routes/twitter')
+var strategyRouter = require('./routes/strategie')
 
 
 var app = express();
@@ -54,6 +57,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use('/users', usersRouter);
+app.use('/google', googleRouter);
+app.use('/twitter', twitterRouter);
+app.use('/strategy', strategyRouter);
 
 
 // Catch 404 and forward to error handler

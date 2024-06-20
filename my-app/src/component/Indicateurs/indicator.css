@@ -1,0 +1,28 @@
+.title-indicator{
+    text-align: center;
+    color: #a688fa;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.indicator-card{
+    background: #282828;
+    border-radius: 30px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.valid{
+    color: #a688fa;
+}
+
+th{
+font-weight: bold;
+    font-size:large;
+}
