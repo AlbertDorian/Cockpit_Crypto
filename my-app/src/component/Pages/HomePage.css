@@ -1,0 +1,89 @@
+/* Ajout des styles pour les fenêtres d'information */
+.info-box {
+    display: none;
+    position: absolute;
+    background-color: #282828;
+    color: #DADADA;
+    border: 1px solid #a688fa;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+    width: max-content;
+    max-width: 200px;
+}
+
+.categorie:hover .info-box,
+.plateform-date:hover .info-box {
+    display: block;
+}
+
+/* Styles existants */
+.indicator-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante */
+    gap: 10px;
+    width: 100%;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    background: #121212;
+    color: #DADADA;
+}
+
+.information-crypto {
+    padding-left: 30px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: #a688fa;
+    background: #282828;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.crypto-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.data-price {
+    color: white;
+}
+
+.dataChart {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-chart {
+    background: #282828;
+    border-radius: 30px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.specified-data {
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.GoogleTrendsChart {
+    width: 300px;
+    height: 250px;
+}
+
+.chart-overview {
+    display: flex;
+}

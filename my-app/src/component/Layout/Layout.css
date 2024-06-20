@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+header {
+    background:#3f3f3f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Profil{
+    width:40px;
+}
+.Icons {
+    cursor: pointer;
+    transition: color 0.2s;
+    color: black;
+}
+
+.Icons:hover {
+    color: royalblue;
+}
+
+.title{
+    padding-left: 10px;
+color: #7A5AF5
+}
+
+.menu-search{
+width: 75%;
+}
+
+.menu-profil{
+padding-right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.icons{
+    color: #7A5AF5
+}

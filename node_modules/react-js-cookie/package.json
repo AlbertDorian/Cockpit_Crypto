@@ -1,0 +1,27 @@
+{
+  "name": "react-js-cookie",
+  "version": "0.0.1",
+  "description": "react js cookie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmurKhoyetsyan/react-js-cookie.git"
+  },
+  "keywords": [
+    "cookie",
+    "react",
+    "js",
+    "typescript",
+    "ts",
+    "javascript"
+  ],
+  "author": "Amurik Khoyetsyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmurKhoyetsyan/react-js-cookie/issues"
+  },
+  "homepage": "https://github.com/AmurKhoyetsyan/react-js-cookie#readme"
+}
